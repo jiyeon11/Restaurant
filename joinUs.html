@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+</head>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+    }
+
+    .container {
+        text-align: center;
+    }
+
+    .signup-form {
+        width: 300px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"] {
+        width: 90%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    button {
+        background-color: #4caf50;
+        color: white;
+        padding: 12px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+<body>
+    <!-- 아이디, 비밀번호, 이름, 닉네임, 성별, 이메일 주소 -->
+    <div class="container">
+        <form class="signup-form" method="post" action="joinUs.php">
+            <h2>회원가입</h2>
+            <div class="form-group">
+                <input type="text" name="username" placeholder="아이디" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="비밀번호" required>
+            </div>
+            <div class="form-group">
+                <input type="text" name="name" placeholder="이름" required>
+            </div>
+            <div class="form-group">
+                <input type="text" name="nickname" placeholder="닉네임" required>
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="이메일 주소" required>
+            </div>
+            <div class="form-group">
+                <label>성별:</label>
+                <input type="radio" name="gender" value="남성" required> 남성
+                <input type="radio" name="gender" value="여성" required> 여성
+            </div>
+            <button type="submit">가입하기</button>
+        </form>
+    </div>
+</body>
+</html>
