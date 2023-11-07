@@ -96,7 +96,10 @@ mysqli_close($conn);  // 데이터베이스 연결 종료
                     <p>이메일</p>
                     <input type="email" id="email" name="email" value="<?php echo $re[5]?>">
                 </div>
-                <button type="submit">수정 완료</button>
+                <div style="display: flex; justify-content: space-between;">
+                    <button type="submit">수정 완료</button>
+                    <a href="withdraw.php" style="margin-right: 10px; margin-top: 15px">회원탈퇴</a>
+                </div>
             </form>
         </div>
 
