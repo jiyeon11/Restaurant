@@ -1,4 +1,7 @@
 <?php
+// 세션 시작
+session_start();
+
 // 데이터베이스 연결
 $conn = mysqli_connect('localhost', 'root', '111111', 'restaurantDB', '3307');
 
@@ -84,8 +87,12 @@ mysqli_close($conn);
     <h1 style="text-align: center;">이랏샤이마세</h2>
     <div class="menu-header">
         <div>
-            <a href="login.html">로그인</a>
-            <a href="joinUs.html">회원가입</a>
+            <?php if(isset($_SESSION['user'])){?>
+                <a href="myPage.html">마이페이지</a>
+            <?php } else { ?>
+                <a href="login.html">로그인</a>
+                <a href="joinUs.html">회원가입</a>
+            <?php } ?>
             <a href="reservation.html">예약하러 가기</a>
             <a href="reviews.html">리뷰보기</a>
         </div>
@@ -101,3 +108,9 @@ mysqli_close($conn);
     </div>
 </body>
 </html>
+
+<!-- test -->
+<?php 
+session_unset(); // 모든 세션 변수 제거
+session_destroy(); // 세션 종료 
+?>

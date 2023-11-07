@@ -1,5 +1,6 @@
 <?php
-// POST로 전달된 사용자 입력값 받기
+session_start(); // 세션 시작
+
 $name = $_POST['name'];  //이름
 $email = $_POST['email'];  //이메일
 $password = $_POST['password'];  //비밀번호
@@ -18,9 +19,12 @@ $sql = "INSERT INTO user (id, password, name, nickname, gender, email) VALUES ('
 
 if ($conn->query($sql) === TRUE) {
     echo "<script>alert('회원가입 성공');</script>";
+    $_SESSION['user'] = $id; // 사용자의 아이디를 세션 변수에 저장
+    echo "<meta http-equiv='refresh' content='0;URL=menu.php'>";
 } else {
     echo "<script>alert('회원가입 실패');</script>";
+    echo "<meta http-equiv='refresh' content='0;URL=joinUs.html'>";
 }
-mysqli_close($conn);  // 데이터베이스 연결 종료
 
+mysqli_close($conn);  // 데이터베이스 연결 종료
 ?>

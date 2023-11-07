@@ -1,4 +1,6 @@
 <?php
+session_start(); // 세션 시작
+
 $id = $_POST['id'];  //아이디
 $password = $_POST['password'];  //비밀번호
 
@@ -10,9 +12,11 @@ $result = mysqli_query($conn, $sql);
 
 if(mysqli_num_rows($result) > 0) {
     echo "<script>alert('로그인 성공');</script>";
+    $_SESSION['user'] = $id; // 사용자의 아이디를 세션 변수에 저장
+    echo "<meta http-equiv='refresh' content='0;URL=menu.php'>";
 } else {
     echo "<script>alert('로그인 실패');</script>";
+    echo "<meta http-equiv='refresh' content='0;URL=login.html'>";
 }
-
 mysqli_close($conn);  // 데이터베이스 연결 종료
 ?>
