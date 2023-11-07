@@ -59,19 +59,37 @@ mysqli_close($conn);
             border-radius: 10px;
             margin-bottom: 10px;
         }
-
         .menu-name {
             font-weight: bold;
             margin: 10px 0;
         }
-
         .menu-description {
             color: #555;
+        }
+        .menu-header {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            padding: 10px 20px;
+            background-color: #E2E2E2;
+        }
+        .menu-header a {
+            margin: 0 20px;
+            text-decoration: none;
+            color: black;
         }
     </style>
 </head>
 <body>
     <h1 style="text-align: center;">이랏샤이마세</h2>
+    <div class="menu-header">
+        <div>
+            <a href="login.html">로그인</a>
+            <a href="joinUs.html">회원가입</a>
+            <a href="reservation.html">예약하러 가기</a>
+            <a href="reviews.html">리뷰보기</a>
+        </div>
+    </div>
     <div class="menu-container">
         <?php foreach ($menus as $menu) : ?>
             <div class="menu-item">
