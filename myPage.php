@@ -98,7 +98,7 @@ mysqli_close($conn);  // 데이터베이스 연결 종료
                 </div>
                 <div style="display: flex; justify-content: space-between;">
                     <button type="submit">수정 완료</button>
-                    <a href="withdraw.php" style="margin-right: 10px; margin-top: 15px">회원탈퇴</a>
+                    <a href="withdraw.html" style="margin-right: 10px; margin-top: 15px">회원탈퇴</a>
                 </div>
             </form>
         </div>
