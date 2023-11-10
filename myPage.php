@@ -1,9 +1,9 @@
 <?php
-session_start(); // 세션 시작
+session_start();
 $id = $_SESSION['user'];
 
 $conn = mysqli_connect('localhost','root','111111','restaurantDB','3307');
-$sql = "select * from user where id='$id'";
+$sql = "SELECT * FROM user WHERE id='$id'";
 $result = mysqli_query($conn,$sql);
 $re = mysqli_fetch_row($result);
 mysqli_close($conn);  // 데이터베이스 연결 종료
@@ -17,19 +17,18 @@ mysqli_close($conn);  // 데이터베이스 연결 종료
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마이페이지</title>
     <style>
+        /* 기본 스타일 */
         body {
             font-family: Arial, sans-serif;
             background-color: #f5f5f5;
             margin: 0;
             padding: 0;
         }
-
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
         }
-
         .section {
             background-color: white;
             border-radius: 10px;
@@ -41,12 +40,11 @@ mysqli_close($conn);  // 데이터베이스 연결 종료
             font-size: 24px;
             margin-bottom: 10px;
         }
-
         .form-group {
             margin-bottom: 15px;
             margin-right: 10px;
         }
-        .form-group p{
+        .form-group p {
             margin: 2px;
             font-weight: bold;
         }
@@ -59,8 +57,7 @@ mysqli_close($conn);  // 데이터베이스 연결 종료
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-
-        button {
+        button, a.button {
             background-color: #4caf50;
             color: white;
             padding: 12px 20px;
@@ -68,10 +65,37 @@ mysqli_close($conn);  // 데이터베이스 연결 종료
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
         }
-
-        button:hover {
+        button:hover, a.button:hover {
             background-color: #45a049;
+        }
+        /* 리뷰 스타일 */
+        .review-item {
+            display: inline-block;
+            margin: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+        }
+        .review-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px 10px 10px 10px;
+        }
+        .review-item h3 {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+        .review-item p {
+            font-size: 16px;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -88,8 +112,8 @@ mysqli_close($conn);  // 데이터베이스 연결 종료
                 <div class="form-group">
                     <p>성별</p>
                     <select id="gender" name="gender">
-                        <option value="M"<?php echo ($re[3] == 'M') ? 'selected' : ''; ?>>남성</option>
-                        <option value="W"<?php echo ($re[3] == 'W') ? 'selected' : ''; ?>>여성</option>
+                        <option value="M"<?php echo ($re[3] == 'M') ? ' selected' : ''; ?>>남성</option>
+                        <option value="W"<?php echo ($re[3] == 'W') ? ' selected' : ''; ?>>여성</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -98,7 +122,7 @@ mysqli_close($conn);  // 데이터베이스 연결 종료
                 </div>
                 <div style="display: flex; justify-content: space-between;">
                     <button type="submit">수정 완료</button>
-                    <a href="withdraw.html" style="margin-right: 10px; margin-top: 15px">회원탈퇴</a>
+                    <a href="withdraw.html" class="button" style="background-color: #ff6347">회원탈퇴</a>
                 </div>
             </form>
         </div>
@@ -110,7 +134,27 @@ mysqli_close($conn);  // 데이터베이스 연결 종료
 
         <div class="section">
             <h2>작성한 리뷰 목록</h2>
-            <!-- 리뷰 목록 표시 -->
+            <?php
+            // 데이터베이스에서 리뷰 정보를 가져와 표시하는 부분
+            $conn = mysqli_connect('localhost','root','111111','restaurantDB','3307');
+            $review_sql = "SELECT * FROM reviews WHERE name ='$id'";
+            $res = mysqli_query($conn, $review_sql);
+            $num = mysqli_num_rows($res);
+            for ($i = 0; $i<$num; $i++) {
+                $row = mysqli_fetch_row($res);
+                echo '<div class="review-item">';
+                if ($row[5] !== null) {
+                    echo '<img src="'.$row[5].'" alt="리뷰 이미지">';
+                }
+                echo '<h3>'.$row[1].'</h3>';
+                echo '<p>'.$row[2].'</p>';
+                echo '<p>서비스 평점: '.$row[8].' / 맛 평점: '.$row[7].'</p>';
+                echo '<p>좋아요: '.$row[6].'</p>';
+                echo '<p>'.$row[4].'</p>';
+                echo '</div>';
+            }
+            mysqli_close($conn);
+            ?>
         </div>
     </div>
 </body>
