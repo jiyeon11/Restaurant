@@ -11,11 +11,10 @@ $sql = "SELECT * FROM user WHERE id = '$id' AND password = '$password'";
 $result = mysqli_query($conn, $sql);
 
 if(mysqli_num_rows($result) > 0) {
-    echo "<script>alert('로그인 성공');</script>";
     $_SESSION['user'] = $id; // 사용자의 아이디를 세션 변수에 저장
     echo "<meta http-equiv='refresh' content='0;URL=menu.php'>";
 } else {
-    echo "<script>alert('로그인 실패');</script>";
+    echo "<script>alert('다시 시도해 주세요');</script>";
     echo "<meta http-equiv='refresh' content='0;URL=login.html'>";
 }
 mysqli_close($conn);  // 데이터베이스 연결 종료
