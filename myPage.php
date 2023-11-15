@@ -97,6 +97,28 @@ mysqli_close($conn);  // 데이터베이스 연결 종료
             font-size: 16px;
             margin-top: 10px;
         }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
     </style>
 </head>
 <body>
@@ -130,6 +152,43 @@ mysqli_close($conn);  // 데이터베이스 연결 종료
         <div class="section">
             <h2>예약 확인</h2>
             <!-- 예약 정보 표시 -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>예약자</th>
+                        <th>예약 날짜</th>
+                        <th>예약 시간</th>
+                        <th>인원</th>
+                        <th>요청사항</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    // 데이터베이스 연결
+                    $conn = mysqli_connect('localhost', 'root', '111111', 'restaurantDB','3307');
+
+                    // 예약 정보 가져오기
+                    $sql = "SELECT * FROM reservations";
+                    $result = mysqli_query($conn, $sql);
+
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo "<tr>";
+                            echo "<td>" . $row['name'] . "</td>";
+                            echo "<td>" . $row['reservation_date'] . "</td>";
+                            echo "<td>" . $row['reservation_time'] . "</td>";
+                            echo "<td>" . $row['number_of_people'] . "</td>";
+                            echo "<td>" . $row['special_requests'] . "</td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='5'>예약된 정보가 없습니다.</td></tr>";
+                    }
+
+                    mysqli_close($conn);
+                    ?>
+                </tbody>
+            </table>
         </div>
 
         <div class="section">
