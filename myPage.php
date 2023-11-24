@@ -51,8 +51,9 @@ mysqli_close($conn);  // 데이터베이스 연결 종료
         input[type="text"],
         input[type="email"],
         select {
-            width: 100%;
+            width: 98%;
             padding: 10px;
+            padding-right: 10px;
             font-size: 16px;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -71,6 +72,13 @@ mysqli_close($conn);  // 데이터베이스 연결 종료
         }
         button:hover, a.button:hover {
             background-color: #45a049;
+        }
+        textarea{
+            width: 98%;
+            height: 100px;
+            padding: 10px;
+            resize: none;
+            font-size: 18px;
         }
         /* 리뷰 스타일 */
         .review-item {
@@ -148,7 +156,13 @@ mysqli_close($conn);  // 데이터베이스 연결 종료
                 </div>
             </form>
         </div>
-
+        <div class="section">
+            <h2>예약</h2>
+            <form action="reservation.php" style="text-align: center;" method="post">
+                <br>
+                <button type="submit" style="display :inline-block;">날짜 선택하기</button>
+            </form>
+        </div>   
         <div class="section">
             <h2>예약 확인</h2>
             <!-- 예약 정보 표시 -->
