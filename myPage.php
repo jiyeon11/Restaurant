@@ -158,9 +158,32 @@ mysqli_close($conn);  // 데이터베이스 연결 종료
         </div>
         <div class="section">
             <h2>예약</h2>
-            <form action="reservation.php" style="text-align: center;" method="post">
+            <form action="reservation.php" method="post">
                 <br>
-                <button type="submit" style="display :inline-block;">날짜 선택하기</button>
+                <div class="form-group">
+                    <p>예약자</p>
+                    <input type="text" name="name" value="<?php echo $re[2]?>">
+                </div>
+                <br>
+                <div class="form-group">
+                    <p>시간선택</p>
+                    <input type="date" name="day"> <!-- 날짜 -->
+                    <input type="time" name="time"> <!-- 시간 -->
+                </div>
+                <br>
+                <div class="form-group">
+                    <p>인원</p>
+                    <input type="number" name="favnum" min="1" max="10" value="1">
+                </div>
+                <br>
+                <div class="form-group">
+                    <p>요청사항</p>
+                    <input type="text" name="special_requests">
+                </div>
+                <br><br><br>
+                <div style=" text-align: center;">
+                    <button type="submit" style=" display: inline-block;">예약하기</button>
+                </div>
             </form>
         </div>   
         <div class="section">
