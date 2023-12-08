@@ -205,7 +205,7 @@ mysqli_close($conn);  // 데이터베이스 연결 종료
                     $conn = mysqli_connect('localhost', 'root', '111111', 'restaurantDB','3307');
 
                     // 예약 정보 가져오기
-                    $sql = "SELECT * FROM reservations";
+                    $sql = "SELECT * FROM reservations WHERE name='$re[2]'";
                     $result = mysqli_query($conn, $sql);
 
                     if (mysqli_num_rows($result) > 0) {
