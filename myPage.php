@@ -167,18 +167,18 @@ mysqli_close($conn);  // 데이터베이스 연결 종료
                 <br>
                 <div class="form-group">
                     <p>시간선택</p>
-                    <input type="date" name="day"> <!-- 날짜 -->
+                    <input type="date" name="date"> <!-- 날짜 -->
                     <input type="time" name="time"> <!-- 시간 -->
                 </div>
                 <br>
                 <div class="form-group">
                     <p>인원</p>
-                    <input type="number" name="favnum" min="1" max="10" value="1">
+                    <input type="number" name="peopleNum" min="1" max="10" value="1">
                 </div>
                 <br>
                 <div class="form-group">
                     <p>요청사항</p>
-                    <input type="text" name="special_requests">
+                    <input type="text" name="request">
                 </div>
                 <br><br><br>
                 <div style=" text-align: center;">
