@@ -162,7 +162,7 @@ mysqli_close($conn);  // 데이터베이스 연결 종료
                 <br>
                 <div class="form-group">
                     <p>예약자</p>
-                    <input type="text" name="name" value="<?php echo $re[2]?>">
+                    <input type="text" name="name" value="<?php echo $re[2]?>" disabled>
                 </div>
                 <br>
                 <div class="form-group">
