@@ -132,7 +132,9 @@ mysqli_close($conn);  // 데이터베이스 연결 종료
 <body>
     <div class="container">
         <div class="section">
-            <h1 style="text-align: center;">이랏샤이마세</h1>
+            <h1 style="text-align: center;">
+                <a href="menu.php" style="text-decoration-line: none; color: inherit;">이랏샤이마세</a>
+            </h1>
             <h2>회원 정보 수정</h2>
             <form action="update_profile.php" method="post">
                 <div class="form-group">

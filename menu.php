@@ -84,7 +84,9 @@ mysqli_close($conn);
     </style>
 </head>
 <body>
-    <h1 style="text-align: center;">이랏샤이마세</h2>
+    <h1 style="text-align: center;">
+        <a href="menu.php" style="text-decoration-line: none; color: inherit;">이랏샤이마세</a>
+    </h1>
     <div class="menu-header">
         <div>
             <a href="reservation.html">예약하러 가기</a>
