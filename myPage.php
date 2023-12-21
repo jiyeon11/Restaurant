@@ -162,7 +162,7 @@ mysqli_close($conn);  // 데이터베이스 연결 종료
                 <br>
                 <div class="form-group">
                     <p>예약자</p>
-                    <input type="text" name="name" value="<?php echo $re[2]?>" disabled>
+                    <input type="text" name="name" value="<?php echo $re[2] ?>">
                 </div>
                 <br>
                 <div class="form-group">
@@ -205,7 +205,7 @@ mysqli_close($conn);  // 데이터베이스 연결 종료
                     $conn = mysqli_connect('localhost', 'root', '111111', 'restaurantDB','3307');
 
                     // 예약 정보 가져오기
-                    $sql = "SELECT * FROM reservations WHERE name='$re[2]'";
+                    $sql = "SELECT * FROM reservations WHERE name='$re[2]' AND DATE(reservation_date) >= DATE(NOW())";
                     $result = mysqli_query($conn, $sql);
 
                     if (mysqli_num_rows($result) > 0) {
